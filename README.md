@@ -12,6 +12,18 @@ Not implemented commands
 * update
 
 
+## Running
+Install the requirements
+```bash
+pip install -r requirements.txt
+```
+
+Following the instructions below on how to acquire the API session credentials and add them to your environment variables.
+```bash
+SID='xxxxxxxxxxxxxxxxx' HSID='xxxxxxxxxxxxxxxxx' SSID='xxxxxxxxxxxxxxxxx' APISID='xxxxxxxxxxxxxxxxx' SAPISID='xxxxxxxxxxxxxxxxx' authorization='xxxxxxxxxxxxxxxxx' key='xxxxxxxxxxxxxxxxx' python src/example.py
+```
+
+
 ## API
 The following internal API at Google is what Google Calendar is using to interact with the Reminders,
 `https://reminders-pa.clients6.google.com/v1internalOP/reminders/`. For some reason, Inbox seems to
@@ -52,13 +64,11 @@ where <COMMAND> is one of the following
 
 Header
 ```
-{
-    'x-origin': 'https://calendar.google.com',
-    'content-type': 'application/json',
-    'authorization': <SESSION AUTHORIZATION>,
-    'key': <SESSION KEY>,
-    'cookie': <SESSION COOKIES>
-}
+'x-origin': 'https://calendar.google.com',
+'content-type': 'application/json',
+'authorization': <SESSION AUTHORIZATION>,
+'key': <SESSION KEY>,
+'cookie': <SESSION COOKIES>
 ```
 
 The Google Calendar is using this API with `application/json+protobuf` in the data payload, but due to readability problems
