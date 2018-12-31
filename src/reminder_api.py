@@ -6,6 +6,14 @@ class ReminderApi(ReminderApiBase):
     def __init__(self):
         super().__init__()
 
+    def get(self, task_id):
+        payload = {
+            "taskId": [{
+                "serverAssignedId": str(task_id)
+            }]
+        }
+        return self.request('get', payload)
+
     def list(self):
         # TODO: Change in payload to change what filter, ex to show already done
 
@@ -14,8 +22,8 @@ class ReminderApi(ReminderApiBase):
         #     "6": 10 // limit, but not called that
         #     "2": Data to be acquired about the tasks
         #     "16": Range specification (end date and time)
-        #     "16": Range specification (end date and time)
-        #     "16": Range specification (start date and time)
+        #     "24": Range specification (end date and time)
+        #     "25": Range specification (start date and time)
         # }
 
         return self.request('list', '')

@@ -4,6 +4,7 @@ This is a work in progress to create an API wrapper for handling Google Reminder
 documentation of the API, this should be considered unstable and not deployed to any production systems.
 
 The current commands are implemented
+* get
 * list
 * create
 * delete
@@ -13,7 +14,7 @@ Not implemented commands
 
 
 ## Running
-Install the requirements
+Use python3 and pip to install the requirements
 ```bash
 pip install -r requirements.txt
 ```
