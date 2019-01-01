@@ -3,3 +3,7 @@
 *.pyc
 .DS_Store
 __pycache__
+build/
+dist/
+*.egg-info/
+*.egg

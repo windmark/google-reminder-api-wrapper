@@ -1,5 +1,5 @@
-from reminder_api_base import ReminderApiBase
-from utils import create_date_object
+from .reminder_api_base import ReminderApiBase
+from .utils import create_date_object
 
 
 class ReminderApi(ReminderApiBase):

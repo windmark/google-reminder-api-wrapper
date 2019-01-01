@@ -13,19 +13,37 @@ Not implemented commands
 * update
 
 
-## Running
-Use python3 and pip to install the requirements
+## Installing
+Install the package with requirements by running
 ```bash
-pip install -r requirements.txt
+python setup.py install
 ```
 
+
+## Usage
 Following the instructions below on how to acquire the API session credentials and add them to your environment variables.
 ```bash
-SID='xxxxxxxxxxxxxxxxx' HSID='xxxxxxxxxxxxxxxxx' SSID='xxxxxxxxxxxxxxxxx' APISID='xxxxxxxxxxxxxxxxx' SAPISID='xxxxxxxxxxxxxxxxx' authorization='xxxxxxxxxxxxxxxxx' key='xxxxxxxxxxxxxxxxx' python src/example.py
+SID='xxxxxxxxxxxxxxxxx' HSID='xxxxxxxxxxxxxxxxx' SSID='xxxxxxxxxxxxxxxxx' APISID='xxxxxxxxxxxxxxxxx' SAPISID='xxxxxxxxxxxxxxxxx' authorization='xxxxxxxxxxxxxxxxx' key='xxxxxxxxxxxxxxxxx' python
+```
+
+```python
+from google_reminder_api_wrapper import ReminderApi
+
+api = ReminderApi()
+reminders = api.list()
+print(reminders)
+
+new_reminder = api.create('Test reminder', '2019-01-10 15:00')
+reminders = api.list()
+print(reminders)
+
+api.delete(new_reminder)
+reminders = api.list()
+print(reminders)
 ```
 
 
-## API
+## Underlying Google Reminder API
 The following internal API at Google is what Google Calendar is using to interact with the Reminders,
 `https://reminders-pa.clients6.google.com/v1internalOP/reminders/`. For some reason, Inbox seems to
 use another API, but the way of Google Calendar is used here.
@@ -58,6 +76,7 @@ The following is the main structure of the request sent to the Reminders API
 `https://reminders-pa.clients6.google.com/v1internalOP/reminders/<COMMAND>`.
 
 where <COMMAND> is one of the following
+* get
 * list
 * update
 * create

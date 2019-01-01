@@ -1,6 +1,6 @@
 import requests
 import json
-from api_credentials import ApiCredentials
+from .api_credentials import ApiCredentials
 
 API_URL = 'https://reminders-pa.clients6.google.com/v1internalOP/reminders/'
 
