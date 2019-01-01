@@ -16,6 +16,10 @@ Not implemented commands
 ## Installing
 Install the package with requirements by running
 ```bash
+pip install google-reminder-api-wrapper
+```
+or locally
+```bash
 python3 setup.py install
 ```
 Note that this package requires Python 3.
