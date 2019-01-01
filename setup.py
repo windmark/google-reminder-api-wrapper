@@ -3,8 +3,6 @@ import setuptools
 with open('README.md', 'r') as f:
     readme = f.read()
 
-with open('LICENSE') as f:
-    license = f.read()
 
 setuptools.setup(
     name='google-reminder-api-wrapper',
@@ -13,7 +11,8 @@ setuptools.setup(
     author_email='marcus.windmark@gmail.com',
     description='An unofficial API wrapper for the Google Reminder',
     long_description=readme,
-    license=license,
+    long_description_content_type='text/markdown',
+    license='MIT',
     url='https://github.com/windmark/google-reminder-api-wrapper',
     packages=setuptools.find_packages(exclude=('tests', 'docs')),
     classifiers=[
