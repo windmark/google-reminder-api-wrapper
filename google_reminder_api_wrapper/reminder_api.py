@@ -6,12 +6,22 @@ class ReminderApi(ReminderApiBase):
     def __init__(self):
         super().__init__()
 
-    def get(self, task_id):
+    def get(self, serverAssignedId='', clientAssignedId=''):
+
+        if not serverAssignedId and not clientAssignedId:
+            raise ValueError("serverAssignedId and clientAssignedId can't both be empty")
+
         payload = {
-            "taskId": [{
-                "serverAssignedId": str(task_id)
-            }]
+            "taskId": [{}]
         }
+
+        if serverAssignedId:
+            payload['taskId'][0]['serverAssignedId'] = serverAssignedId
+
+        if clientAssignedId:
+            payload['taskId'][0]['clientAssignedId'] = clientAssignedId    
+
+        
         return self.request('get', payload)
 
     def list(self):
