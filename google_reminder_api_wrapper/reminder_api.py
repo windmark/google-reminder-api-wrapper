@@ -28,7 +28,7 @@ class ReminderApi(ReminderApiBase):
 
         return self.request('list', '')
 
-    def create(self, title, due_date=''):
+    def create(self, title, due_date='', clientAssignedId=''):
         if not title:
             raise ValueError("Title can't be empty when creating reminder")
 
@@ -38,8 +38,12 @@ class ReminderApi(ReminderApiBase):
             },
             "task": {
                 "title": title
-            }
+            },
+            "taskId": {}
         }
+
+        if clientAssignedId:
+            payload['taskId']['clientAssignedId'] = clientAssignedId
 
         if due_date:
             payload['task']['dueDate'] = create_date_object(due_date)
