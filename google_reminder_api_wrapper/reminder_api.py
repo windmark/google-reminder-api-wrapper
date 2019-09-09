@@ -17,10 +17,10 @@ class ReminderApi(ReminderApiBase):
         }
 
         if task_id:
-            payload['taskId'][0]['serverAssignedId'] = task_id
+            payload['taskId'][0]['serverAssignedId'] = str(task_id)
 
         if clientAssignedId:
-            payload['taskId'][0]['clientAssignedId'] = clientAssignedId    
+            payload['taskId'][0]['clientAssignedId'] = str(clientAssignedId)    
 
         
         return self.request('get', payload)
@@ -54,7 +54,7 @@ class ReminderApi(ReminderApiBase):
         }
 
         if clientAssignedId:
-            payload['taskId']['clientAssignedId'] = clientAssignedId
+            payload['taskId']['clientAssignedId'] = str(clientAssignedId)
 
         if due_date:
             payload['task']['dueDate'] = create_date_object(due_date)
