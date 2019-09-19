@@ -6,12 +6,16 @@ class ReminderApi(ReminderApiBase):
     def __init__(self):
         super().__init__()
 
-    def get(self, task_id):
+    def get(self, task_id, **kwargs):
         payload = {
             "taskId": [{
                 "serverAssignedId": str(task_id)
             }]
         }
+
+        for key, value in kwargs.items():
+            payload[key] = value
+
         return self.request('get', payload)
 
     def list(self):
@@ -28,7 +32,7 @@ class ReminderApi(ReminderApiBase):
 
         return self.request('list', '')
 
-    def create(self, title, due_date=''):
+    def create(self, title, due_date='', **kwargs):
         if not title:
             raise ValueError("Title can't be empty when creating reminder")
 
@@ -44,13 +48,20 @@ class ReminderApi(ReminderApiBase):
         if due_date:
             payload['task']['dueDate'] = create_date_object(due_date)
 
+        for key, value in kwargs.items():
+            payload[key] = value
+
         res = self.request('create', payload)
         return res['taskId']['serverAssignedId']
 
-    def delete(self, task_id):
+    def delete(self, task_id, **kwargs):
         payload = {
             "taskId": [{
                 "serverAssignedId": str(task_id)
             }]
         }
+
+        for key, value in kwargs.items():
+            payload[key] = value
+        
         self.request('delete', payload)
