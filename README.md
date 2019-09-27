@@ -56,6 +56,8 @@ reminders = api.list()
 for reminder in reminders['task']:
     if(reminder['taskId']['clientAssignedId'].startsWith('customid')):
         print(reminder)
+
+api.delete('', taskId={'clientAssignedId': 'customid'})
 ```
 
 ## Underlying Google Reminder API
