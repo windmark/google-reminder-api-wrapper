@@ -14,7 +14,7 @@ class ReminderApi(ReminderApiBase):
         }
 
         for key, value in kwargs.items():
-            payload[key] = str(value)
+            payload[key] = value
 
         return self.request('get', payload)
 
@@ -49,7 +49,7 @@ class ReminderApi(ReminderApiBase):
             payload['task']['dueDate'] = create_date_object(due_date)
 
         for key, value in kwargs.items():
-            payload[key] = str(value)
+            payload[key] = value
 
         res = self.request('create', payload)
         return res['taskId']['serverAssignedId']
@@ -62,6 +62,6 @@ class ReminderApi(ReminderApiBase):
         }
 
         for key, value in kwargs.items():
-            payload[key] = str(value)
+            payload[key] = value
         
         self.request('delete', payload)
