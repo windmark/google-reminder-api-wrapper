@@ -46,7 +46,19 @@ api.delete(new_reminder)
 reminders = api.list()
 print(reminders)
 ```
+It is also possible to override part of the request payload, by adding keyword args corresponding to the payload's keys.
 
+```python
+api = ReminderApi()
+api.create('Test reminder', '2019-01-10 15:00', taskId={'clientAssignedId': 'customid'})
+
+reminders = api.list()
+for reminder in reminders['task']:
+    if(reminder['taskId']['clientAssignedId'].startsWith('customid')):
+        print(reminder)
+
+api.delete('', taskId={'clientAssignedId': 'customid'})
+```
 
 ## Underlying Google Reminder API
 ### Authorization
